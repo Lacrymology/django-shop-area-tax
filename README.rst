@@ -15,5 +15,22 @@ Area definitions
 
 Usage
 -----
-Add 'area_tax' to INSTALLED_APPS and 'area_tax.modifiers.AreaTaxModifier' to
+Add "area_tax" to INSTALLED_APPS and "area_tax.modifiers.AreaTaxModifier" to
 your SHOP_CART_MODIFIERS list.
+
+You'll also need to run `./manage.py syncdb` (or `./manage.py migrate area_tax`
+if you use south).
+
+area_tax will look for ONE Country (`l10n.models.Country`), and ONE AdminArea
+to calculate taxes. If the `area_tax.models.AreaTax` instance is marked as
+compound (and it refers to an AdminArea), the tax will be calculated on top of
+the total current price. Otherwise, the subtotal will be used.
+
+Likewise, if the `area_tax.models.AreaTax` is marked to override National Tax,
+the Country Tax calculation will be skipped.
+
+Settings
+--------
+DJANGO_SHOP_TAX_SHIPPING_ADDRESS (default True). True, if you want the tax
+calculated from shipping address. False will calculate it based on billing
+addresss instead.
