@@ -8,34 +8,47 @@ class Migration(SchemaMigration):
 
     def forwards(self, orm):
         
-        # Adding model 'LocalTax'
-        db.create_table('area_tax_localtax', (
+        # Adding model 'AreaTax'
+        db.create_table('area_tax_areatax', (
             ('id', self.gf('django.db.models.fields.AutoField')(primary_key=True)),
-            ('content_type', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['contenttypes.ContentType'])),
-            ('object_id', self.gf('django.db.models.fields.PositiveIntegerField')()),
+            ('country', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['l10n.Country'])),
+            ('area', self.gf('django.db.models.fields.related.ForeignKey')(to=orm['l10n.AdminArea'], null=True)),
         ))
-        db.send_create_signal('area_tax', ['LocalTax'])
+        db.send_create_signal('area_tax', ['AreaTax'])
 
 
     def backwards(self, orm):
         
-        # Deleting model 'LocalTax'
-        db.delete_table('area_tax_localtax')
+        # Deleting model 'AreaTax'
+        db.delete_table('area_tax_areatax')
 
 
     models = {
-        'area_tax.localtax': {
-            'Meta': {'object_name': 'LocalTax'},
-            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['contenttypes.ContentType']"}),
-            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'object_id': ('django.db.models.fields.PositiveIntegerField', [], {})
+        'area_tax.areatax': {
+            'Meta': {'object_name': 'AreaTax'},
+            'area': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['l10n.AdminArea']", 'null': 'True'}),
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['l10n.Country']"}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'})
         },
-        'contenttypes.contenttype': {
-            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
-            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
+        'l10n.adminarea': {
+            'Meta': {'ordering': "('name',)", 'object_name': 'AdminArea'},
+            'abbrev': ('django.db.models.fields.CharField', [], {'max_length': '3', 'null': 'True', 'blank': 'True'}),
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'country': ('django.db.models.fields.related.ForeignKey', [], {'to': "orm['l10n.Country']"}),
             'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
-            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
-            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '60'})
+        },
+        'l10n.country': {
+            'Meta': {'ordering': "('name',)", 'object_name': 'Country'},
+            'active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
+            'admin_area': ('django.db.models.fields.CharField', [], {'max_length': '2', 'null': 'True', 'blank': 'True'}),
+            'continent': ('django.db.models.fields.CharField', [], {'max_length': '2'}),
+            'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
+            'iso2_code': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '2'}),
+            'iso3_code': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '3'}),
+            'name': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
+            'numcode': ('django.db.models.fields.PositiveSmallIntegerField', [], {'null': 'True', 'blank': 'True'}),
+            'printable_name': ('django.db.models.fields.CharField', [], {'max_length': '128'})
         }
     }
 
