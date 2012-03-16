@@ -8,6 +8,7 @@ class AreaTax(models.Model):
     """
     One area's tax
     """
+    name = models.CharField(_("name"), max_length=32)
     country = models.ForeignKey(Country, verbose_name=_("country"))
     area = models.ForeignKey(AdminArea, verbose_name=_("area"), null=True,
                              blank=True)
