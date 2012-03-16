@@ -9,8 +9,13 @@ class AreaTax(models.Model):
     One area's tax
     """
     country = models.ForeignKey(Country, verbose_name=_("country"))
-    area = models.ForeignKey(AdminArea, verbose_name=_("area"), null=True)
+    area = models.ForeignKey(AdminArea, verbose_name=_("area"), null=True,
+                             blank=True)
+    is_compound = models.BooleanField(_("is compound"))
+    override_national = models.BooleanField(_("override national tax"))
 
     class Meta:
         verbose_name = _("area tax")
         verbose_name_plural = _("area taxes")
+        unique_together = ("country", "area", )
+        ordering = ("country", "area",)

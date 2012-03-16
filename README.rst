@@ -29,6 +29,12 @@ the total current price. Otherwise, the subtotal will be used.
 Likewise, if the `area_tax.models.AreaTax` is marked to override National Tax,
 the Country Tax calculation will be skipped.
 
+Admin
+-----
+The Area fieldin the AreaTax model is optional. If left blank, you're setting
+the country-wide tax. Otherwise, you're setting the area's tax, and it will
+behave as describe above about compounding and overrides.
+
 Settings
 --------
 DJANGO_SHOP_TAX_SHIPPING_ADDRESS (default True). True, if you want the tax
