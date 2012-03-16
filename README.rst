@@ -40,3 +40,8 @@ Settings
 DJANGO_SHOP_TAX_SHIPPING_ADDRESS (default True). True, if you want the tax
 calculated from shipping address. False will calculate it based on billing
 addresss instead.
+
+WARNING
+-------
+If you use the provided fixtures, beware that the objects' IDs might conflict
+in them.

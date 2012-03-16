@@ -1,0 +1,122 @@
+[
+ {
+  "pk": 2, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "HST", 
+   "area": 613, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": true, 
+   "percentage": "0.120000"
+  }
+ }, 
+ {
+  "pk": 3, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "PST", 
+   "area": 614, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": false, 
+   "percentage": "0.070000"
+  }
+ }, 
+ {
+  "pk": 4, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "HST", 
+   "area": 615, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": true, 
+   "percentage": "0.130000"
+  }
+ }, 
+ {
+  "pk": 5, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "HST", 
+   "area": 616, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": true, 
+   "percentage": "0.130000"
+  }
+ }, 
+ {
+  "pk": 6, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "HST", 
+   "area": 617, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": true, 
+   "percentage": "0.150000"
+  }
+ }, 
+ {
+  "pk": 7, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "HST", 
+   "area": 618, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": true, 
+   "percentage": "0.130000"
+  }
+ }, 
+ {
+  "pk": 8, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "PST", 
+   "area": 619, 
+   "country": 39, 
+   "is_compound": true, 
+   "override_national": false, 
+   "percentage": "0.095000"
+  }
+ }, 
+ {
+  "pk": 9, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "QST", 
+   "area": 620, 
+   "country": 39, 
+   "is_compound": true, 
+   "override_national": false, 
+   "percentage": "0.095000"
+  }
+ }, 
+ {
+  "pk": 10, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "PST", 
+   "area": 621, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": false, 
+   "percentage": "0.050000"
+  }
+ }, 
+ {
+  "pk": 1, 
+  "model": "area_tax.areatax", 
+  "fields": {
+   "name": "GST", 
+   "area": null, 
+   "country": 39, 
+   "is_compound": false, 
+   "override_national": false, 
+   "percentage": "0.050000"
+  }
+ }
+]
