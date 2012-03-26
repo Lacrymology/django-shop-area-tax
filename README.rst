@@ -37,9 +37,14 @@ behave as describe above about compounding and overrides.
 
 Settings
 --------
-DJANGO_SHOP_TAX_SHIPPING_ADDRESS (default True). True, if you want the tax
+All settings go inside a dictionary named DJANGO_SHOP_AREA_TAX in your
+settings.py file.
+TAX_SHIPPING_ADDRESS (default True). True, if you want the tax
 calculated from shipping address. False will calculate it based on billing
 addresss instead.
+
+e.g:
+DJANGO_SHOP_AREA_TAX = { 'TAX_SHIPPING_ADDRESS': False, }
 
 WARNING
 -------
