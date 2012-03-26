@@ -85,4 +85,5 @@ class AreaTax(MultipleFieldCartModifier):
                                                          tax_values[0]))
             else:
                 tax_values.append(area_tax.percentage * cart.current_total)
+        tax_values = [value.quantize(zero) for value in tax_values]
         return zip(tax_names, tax_values)
