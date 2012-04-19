@@ -1,5 +1,7 @@
-from shop.cart.cart_modifiers_base import BaseCartModifier
 from decimal import Decimal
+
+from shop.cart.cart_modifiers_base import BaseCartModifier
+from shop.models import AddressModel
 
 from area_tax import settings
 from area_tax import models
@@ -40,7 +42,6 @@ class MultipleFieldCartModifier(BaseCartModifier):
                 cart_item.extra_price_fields.append(field)
         return cart_item
 
-        
 class AreaTax(MultipleFieldCartModifier):
     """
     Applies a tax according to the buyer's location
@@ -49,9 +50,14 @@ class AreaTax(MultipleFieldCartModifier):
         """
         """
         zero = Decimal("0.00")
-        address = (cart.user.shipping_address
-                   if settings.DJANGO_SHOP_AREA_TAX['TAX_SHIPPING_ADDRESS']
-                   else cart.user.billing_address)
+
+        try:
+            address = (cart.user.shipping_address
+                       if settings.DJANGO_SHOP_AREA_TAX['TAX_SHIPPING_ADDRESS']
+                       else cart.user.billing_address)
+        except AddressModel.DoesNotExist:
+            return None
+
         try:
             area_tax = models.AreaTax.objects.get(country=address.country,
                                                   area=address.state,)
