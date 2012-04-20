@@ -51,6 +51,9 @@ class AreaTax(MultipleFieldCartModifier):
         """
         zero = Decimal("0.00")
 
+        if not cart.user:
+            return None
+        
         try:
             address = (cart.user.shipping_address
                        if settings.DJANGO_SHOP_AREA_TAX['TAX_SHIPPING_ADDRESS']
